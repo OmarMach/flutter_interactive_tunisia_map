@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'tunisia_map_painter.dart';
 
+/// Generating colored text.
 TextPainter generateTextPainter({required String label, bool isSelected = false}) {
   return TextPainter(
     textDirection: TextDirection.ltr,
@@ -12,9 +13,10 @@ TextPainter generateTextPainter({required String label, bool isSelected = false}
   );
 }
 
+/// Generating Regions and their features.
 Map<String, PaintInformation> generateRegions(Color color) => {
-      'galliteIsle': PaintInformation(textPainter: generateTextPainter(label: 'galliteIsle'), paint: Paint()..color = color),
-      'zembraIsle': PaintInformation(textPainter: generateTextPainter(label: 'zembraIsle'), paint: Paint()..color = color),
+      'galliteIsle': PaintInformation(textPainter: generateTextPainter(label: 'Gallite'), paint: Paint()..color = color),
+      'zembraIsle': PaintInformation(textPainter: generateTextPainter(label: 'Zembra'), paint: Paint()..color = color),
       'tozeur': PaintInformation(textPainter: generateTextPainter(label: 'Tozeur'), paint: Paint()..color = color),
       'beja': PaintInformation(textPainter: generateTextPainter(label: 'Beja'), paint: Paint()..color = color),
       'Tunis': PaintInformation(textPainter: generateTextPainter(label: 'Tunis'), paint: Paint()..color = color),
@@ -25,7 +27,7 @@ Map<String, PaintInformation> generateRegions(Color color) => {
       'gasserine': PaintInformation(textPainter: generateTextPainter(label: 'Gasserine'), paint: Paint()..color = color),
       'gabes': PaintInformation(textPainter: generateTextPainter(label: 'Gabes'), paint: Paint()..color = color),
       'gafsa': PaintInformation(textPainter: generateTextPainter(label: 'Gafsa'), paint: Paint()..color = color),
-      'sidibouzid': PaintInformation(textPainter: generateTextPainter(label: 'SidiBouzid'), paint: Paint()..color = color),
+      'Sidi Bouzid': PaintInformation(textPainter: generateTextPainter(label: 'Sidi Bouzid'), paint: Paint()..color = color),
       'sfax': PaintInformation(textPainter: generateTextPainter(label: 'Sfax'), paint: Paint()..color = color),
       'siliana': PaintInformation(textPainter: generateTextPainter(label: 'Siliana'), paint: Paint()..color = color),
       'mahdia': PaintInformation(textPainter: generateTextPainter(label: 'Mahdia'), paint: Paint()..color = color),
@@ -37,6 +39,14 @@ Map<String, PaintInformation> generateRegions(Color color) => {
       'Kebili': PaintInformation(textPainter: generateTextPainter(label: 'Kebili'), paint: Paint()..color = color),
       'tatawin': PaintInformation(textPainter: generateTextPainter(label: 'Tatawin'), paint: Paint()..color = color),
     };
+
+/// Updates the region features with appropriate tap actions.
+///
+/// 1. Checking if tapped position is inside a region path.
+/// 2. Checking if the region is already selected.
+/// 3. Applying selected/unselected colors to region items.
+/// 4. Returning region list.
+///
 Map<String, PaintInformation> tapMapHandler({
   required TunisiaMapPainter painter,
   required Map<String, PaintInformation> regions,
@@ -178,12 +188,12 @@ Map<String, PaintInformation> tapMapHandler({
     return regions;
   }
   if (painter.sidibouzid.contains(localPosition)) {
-    if (regions['sidibouzid']!.paint.color.value == selectedColor.value) {
-      regions['sidibouzid']!.paint.color = unSelectedColor;
-      regions['sidibouzid']!.textPainter = generateTextPainter(label: 'SidiBouzid');
+    if (regions['Sidi Bouzid']!.paint.color.value == selectedColor.value) {
+      regions['Sidi Bouzid']!.paint.color = unSelectedColor;
+      regions['Sidi Bouzid']!.textPainter = generateTextPainter(label: 'Sidi Bouzid');
     } else {
-      regions['sidibouzid']!.paint.color = selectedColor;
-      regions['sidibouzid']!.textPainter = generateTextPainter(label: 'SidiBouzid', isSelected: true);
+      regions['Sidi Bouzid']!.paint.color = selectedColor;
+      regions['Sidi Bouzid']!.textPainter = generateTextPainter(label: 'Sidi Bouzid', isSelected: true);
     }
 
     return regions;
@@ -235,10 +245,10 @@ Map<String, PaintInformation> tapMapHandler({
   if (painter.kairawen.contains(localPosition)) {
     if (regions['kairawen']!.paint.color.value == selectedColor.value) {
       regions['kairawen']!.paint.color = unSelectedColor;
-      regions['kairawen']!.textPainter = generateTextPainter(label: 'Kairaouen');
+      regions['kairawen']!.textPainter = generateTextPainter(label: 'Kairouan');
     } else {
       regions['kairawen']!.paint.color = selectedColor;
-      regions['kairawen']!.textPainter = generateTextPainter(label: 'Kairaouen', isSelected: true);
+      regions['kairawen']!.textPainter = generateTextPainter(label: 'Kairouan', isSelected: true);
     }
 
     return regions;

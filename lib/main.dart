@@ -42,22 +42,28 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final size = getSize(context);
     return Scaffold(
-      appBar: AppBar(title: const Text('Map of Tunisia')),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
             onTapDown: (details) {
-              setState(() {
-                regions = tapMapHandler(
-                  painter: painter,
-                  regions: regions,
-                  selectedColor: Colors.amber,
-                  unSelectedColor: Colors.blue,
-                  localPosition: details.localPosition,
-                );
-                painter = TunisiaMapPainter(regions: regions);
-              });
+              // If you want to only select one region at a time.
+              regions = generateRegions(Colors.blue);
+
+              // Updating selected regions into region items.
+              regions = tapMapHandler(
+                painter: painter,
+                regions: regions,
+                selectedColor: Colors.greenAccent,
+                unSelectedColor: Colors.blue,
+                localPosition: details.localPosition,
+              );
+
+              // Updating painter with new regions list.
+              painter = TunisiaMapPainter(regions: regions);
+
+              // Refreshing UI
+              setState(() {});
             },
             child: CustomPaint(
               size: Size(size.width, size.height),

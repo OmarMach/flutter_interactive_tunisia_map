@@ -11,37 +11,37 @@ class PaintInformation {
 }
 
 class TunisiaMapPainter extends CustomPainter {
-  Path galliteIsle = Path();
-  Path zembraIsle = Path();
-  Path tozeur = Path();
-  Path beja = Path();
-  Path benzart = Path();
-  Path jendouba = Path();
-  Path nabeul = Path();
-  Path tunis = Path();
-  Path kef = Path();
-  Path gasserine = Path();
-  Path gabes = Path();
-  Path gafsa = Path();
-  Path sidibouzid = Path();
-  Path sfax = Path();
-  Path siliana = Path();
-  Path mahdia = Path();
-  Path mestir = Path();
-  Path kairawen = Path();
-  Path sousse = Path();
-  Path zaghouen = Path();
-  Path medenine = Path();
-  Path gbeli = Path();
-  Path tatawin = Path();
+  final Path galliteIsle = Path();
+  final Path zembraIsle = Path();
+  final Path tozeur = Path();
+  final Path beja = Path();
+  final Path benzart = Path();
+  final Path jendouba = Path();
+  final Path nabeul = Path();
+  final Path tunis = Path();
+  final Path kef = Path();
+  final Path gasserine = Path();
+  final Path gabes = Path();
+  final Path gafsa = Path();
+  final Path sidibouzid = Path();
+  final Path sfax = Path();
+  final Path siliana = Path();
+  final Path mahdia = Path();
+  final Path mestir = Path();
+  final Path kairawen = Path();
+  final Path sousse = Path();
+  final Path zaghouen = Path();
+  final Path medenine = Path();
+  final Path gbeli = Path();
+  final Path tatawin = Path();
 
+  /// List containing region and its features.
   final Map<String, PaintInformation> regions;
+
   TunisiaMapPainter({required this.regions});
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
-  }
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -3362,8 +3362,8 @@ class TunisiaMapPainter extends CustomPainter {
     tatawin.lineTo(size.width * 0.9057000, size.height * 0.7301668);
     tatawin.close();
 
-    // canvas.drawPath(zembraIsle, regions['galliteIsle']!.paint);
-    // canvas.drawPath(galliteIsle, regions['zembraIsle']!.paint);
+    canvas.drawPath(zembraIsle, regions['galliteIsle']!.paint);
+    canvas.drawPath(galliteIsle, regions['zembraIsle']!.paint);
     canvas.drawPath(tozeur, regions['tozeur']!.paint);
     canvas.drawPath(tunis, regions['Tunis']!.paint);
     canvas.drawPath(beja, regions['beja']!.paint);
@@ -3374,7 +3374,7 @@ class TunisiaMapPainter extends CustomPainter {
     canvas.drawPath(gasserine, regions['gasserine']!.paint);
     canvas.drawPath(gabes, regions['gabes']!.paint);
     canvas.drawPath(gafsa, regions['gafsa']!.paint);
-    canvas.drawPath(sidibouzid, regions['sidibouzid']!.paint);
+    canvas.drawPath(sidibouzid, regions['Sidi Bouzid']!.paint);
     canvas.drawPath(sfax, regions['sfax']!.paint);
     canvas.drawPath(siliana, regions['siliana']!.paint);
     canvas.drawPath(mahdia, regions['mahdia']!.paint);
@@ -3386,6 +3386,7 @@ class TunisiaMapPainter extends CustomPainter {
     canvas.drawPath(gbeli, regions['Kebili']!.paint);
     canvas.drawPath(tatawin, regions['tatawin']!.paint);
 
+    // Painting text
     regions['tozeur']!.textPainter.layout(
           minWidth: 0,
           // maxWidth: tozeur.getBounds().size.shortestSide,
@@ -3427,7 +3428,7 @@ class TunisiaMapPainter extends CustomPainter {
           minWidth: 0,
           // maxWidth: gafsa.getBounds().size.shortestSide,
         );
-    regions['sidibouzid']!.textPainter.layout(
+    regions['Sidi Bouzid']!.textPainter.layout(
           minWidth: 0,
           // maxWidth: sidibouzid.getBounds().size.shortestSide,
         );
@@ -3471,7 +3472,7 @@ class TunisiaMapPainter extends CustomPainter {
           minWidth: 0,
           // maxWidth: tatawin.getBounds().size.shortestSide,
         );
-
+    // Binding text to position
     regions['tozeur']!.textPainter.paint(canvas, tozeur.getBounds().center - Offset(30, 0));
     regions['Tunis']!.textPainter.paint(canvas, tunis.getBounds().center - Offset(10, 10));
     regions['beja']!.textPainter.paint(canvas, beja.getBounds().center - Offset(20, -5));
@@ -3482,7 +3483,7 @@ class TunisiaMapPainter extends CustomPainter {
     regions['gasserine']!.textPainter.paint(canvas, gasserine.getBounds().center - Offset(30, 0));
     regions['gabes']!.textPainter.paint(canvas, gabes.getBounds().center - Offset(30, 0));
     regions['gafsa']!.textPainter.paint(canvas, gafsa.getBounds().center - Offset(30, 0));
-    regions['sidibouzid']!.textPainter.paint(canvas, sidibouzid.getBounds().center - Offset(30, 0));
+    regions['Sidi Bouzid']!.textPainter.paint(canvas, sidibouzid.getBounds().center - Offset(30, 0));
     regions['sfax']!.textPainter.paint(canvas, sfax.getBounds().center - Offset(30, 10));
     regions['siliana']!.textPainter.paint(canvas, siliana.getBounds().center - Offset(20, 20));
     regions['mahdia']!.textPainter.paint(canvas, mahdia.getBounds().center - Offset(20, 10));
