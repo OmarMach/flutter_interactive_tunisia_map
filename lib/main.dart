@@ -12,7 +12,7 @@ class TunisiaMapApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'Map of Tunisia ',
+      title: 'Map of Tunisia',
       home: HomeScreen(),
     );
   }
@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    regions = generateRegions(Colors.blue);
+    regions = generateRegions(Colors.lightBlue);
     painter = TunisiaMapPainter(regions: regions);
     super.initState();
   }
@@ -42,20 +42,21 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final size = getSize(context);
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 40, 40, 40),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
             onTapDown: (details) {
               // If you want to only select one region at a time.
-              regions = generateRegions(Colors.blue);
+              regions = generateRegions(Colors.lightBlue);
 
               // Updating selected regions into region items.
               regions = tapMapHandler(
                 painter: painter,
                 regions: regions,
                 selectedColor: Colors.greenAccent,
-                unSelectedColor: Colors.blue,
+                unSelectedColor: Colors.lightBlue,
                 localPosition: details.localPosition,
               );
 
